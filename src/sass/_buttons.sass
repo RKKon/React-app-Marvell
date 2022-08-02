@@ -1,0 +1,31 @@
+.btn
+    cursor: pointer
+    width: 100px
+    height: 38px 
+    border: none
+    background: $main__btn__color
+    line-height: 16px
+    color: #FFFFFF
+    background-color: transparent
+    background-image: linear-gradient(135deg, transparent 8px, $main__btn__color 8px, $main__btn__color 89px, transparent 89px, transparent)
+.grey__btn
+    background-color: transparent
+    background-image: linear-gradient(135deg, transparent 8px, $second__btn_color 8px, $second__btn_color 89px, transparent 89px, transparent)
+.btn__load__more
+    display: block
+    margin: 0 auto
+    width: 170px
+    background-image: linear-gradient(135deg, transparent 8px, $main__btn__color 8px, $main__btn__color 139px, transparent 139px, transparent)
+    &:disabled
+        filter: grayscale(.80)
+.btn__comics__load__more
+    position: relative
+    left: 50%
+    transform: translate(-50%, 0)
+    width: 170px
+    margin: 0 auto
+    margin-bottom: 50px
+    background-image: linear-gradient(135deg, transparent 8px, $main__btn__color 8px, $main__btn__color 139px, transparent 139px, transparent)
+.btn:hover
+    margin-top: 5px
+    filter: drop-shadow(0px 5px 10px #9F0013)
