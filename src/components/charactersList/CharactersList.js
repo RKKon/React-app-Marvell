@@ -71,6 +71,7 @@ class CharactersList extends Component {
     const items = arr.map((item, i) => {
       let imgStyle = {'objectFit' : 'cover'}
       if (item.thumbnail === 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg') {
+        // eslint-disable-next-line
         imgStyle = {'objectFit' : 'unset'}
       }
       return (
@@ -89,7 +90,6 @@ class CharactersList extends Component {
           <h2>{item.name}</h2>
         </li>
       )
-
     }) 
     return (
       <ul className="flex__display__content contetnt__container mb__50">
