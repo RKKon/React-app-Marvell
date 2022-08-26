@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/React-app-Marvell/static/css/main.1d859536.css",
+    "main.js": "/React-app-Marvell/static/js/main.c9e31465.js",
+    "static/media/x-men.png": "/React-app-Marvell/static/media/x-men.1f72fb76e56462a9c7d4.png",
+    "static/media/UW.png": "/React-app-Marvell/static/media/UW.73045b0eee92df0c9051.png",
+    "static/media/bg_asset.png": "/React-app-Marvell/static/media/bg_asset.4d6f967110994e4613c0.png",
+    "static/media/loki.png": "/React-app-Marvell/static/media/loki.a8e28fbb6392bccbbfc5.png",
+    "static/media/Decoration.png": "/React-app-Marvell/static/media/Decoration.b10f8e634d5efd274514.png",
+    "static/media/Avengers.png": "/React-app-Marvell/static/media/Avengers.c29e0ef078dddc7551e8.png",
+    "static/media/error.gif": "/React-app-Marvell/static/media/error.42292aa12b6bc303ce99.gif",
+    "static/media/Avengers_logo.png": "/React-app-Marvell/static/media/Avengers_logo.9b944f717f2c146c4762.png",
+    "index.html": "/React-app-Marvell/index.html",
+    "main.1d859536.css.map": "/React-app-Marvell/static/css/main.1d859536.css.map",
+    "main.c9e31465.js.map": "/React-app-Marvell/static/js/main.c9e31465.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1d859536.css",
+    "static/js/main.c9e31465.js"
+  ]
+}
