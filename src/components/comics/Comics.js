@@ -1,4 +1,5 @@
 import { useState, useEffect} from 'react';
+
 import SubHeader from '../subHeader/SubHeader';
 import Header from '../header/Header';
 import useMarvelService from '../../services/MarvelService';
