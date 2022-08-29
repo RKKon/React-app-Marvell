@@ -1,8 +1,8 @@
-import { Component } from 'react';
+import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import Form from '../form/Form';
-import MarvelService from '../../services/MarvelService';
+import useMarvelService from '../../services/MarvelService';
 import ErrorMessage from '../errorMessage/ErrorMessage';
 import Spinner from '../spinner/Spinner';
 import Skeleton from '../skeleton/Skeleton'
@@ -10,76 +10,43 @@ import Skeleton from '../skeleton/Skeleton'
 import '../../sass/style.sass'
 import './characterInfo.sass'
 
-class CharacterInfo extends Component {
-  state = {
-    character: null,
-    loading: false,
-    error: false
-  }
-  marvelService = new MarvelService();
+const CharacterInfo = (props) => {
+  const [character, setCharacter] = useState(null);
 
-  componentDidMount() {
-    this.updateCharacter();
+  const {loading, error, getCharacter, clearError} = useMarvelService();
+
+  const onCharacterLoaded = (character) => {
+    setCharacter(character)
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    if (this.props.characterId !== prevProps.characterId) {
-      this.updateCharacter();
-    }
-  }
-
-  componentDidCatch(err, info) {
-    console.log(err, info);
-    this.setState({error: true})
-  }
-
-  onCharacterLoading = () => { this.setState({loading: true})}
-  onCharacterLoaded = (character) => {
-    this.setState({
-      character, 
-      loading: false,
-    })
-  }
-
-  onError = () => {
-    this.setState({
-      loading: false,
-      error: true
-    })
-  }
-
-  updateCharacter = () => {
-    const {characterId} = this.props;
+  const updateCharacter = () => {
+    const {characterId} = props;
     if (!characterId) { return; }
+    clearError();
 
-    this.onCharacterLoading();
-    this.marvelService
-      .getCharacter(characterId)
-      .then(this.onCharacterLoaded)
-      .catch(this.onError)
+    getCharacter(characterId)
+      .then(onCharacterLoaded)
   }
 
-  render() {
-    const {character, loading, error} = this.state;
+  useEffect(() => {
+    updateCharacter();
+  },[props.characterId])
 
-    const skeleton = character || loading || error ? null : <Skeleton></Skeleton>;
-    const errorMessage = error ? <ErrorMessage></ErrorMessage> : null;
-    const spinner = loading ? <Spinner></Spinner> : null;
-    const content = !(loading || error || !character) ? <View character={character}></View> : null;
-    return (
-      <div className='need_flex_style_if_use_itself'>
-        <div className="character__info__active">
-          {skeleton}
-          {errorMessage}
-          {spinner}
-          {content}
-        </div>
-        {/* <Skeleton></Skeleton> */}
-        <Form></Form>
-
+  const skeleton = character || loading || error ? null : <Skeleton></Skeleton>;
+  const errorMessage = error ? <ErrorMessage></ErrorMessage> : null;
+  const spinner = loading ? <Spinner></Spinner> : null;
+  const content = !(loading || error || !character) ? <View character={character}></View> : null;
+  return (
+    <div className='need_flex_style_if_use_itself'>
+      <div className="character__info__active">
+        {skeleton}
+        {errorMessage}
+        {spinner}
+        {content}
       </div>
-    )
-  }
+      <Form></Form>
+    </div>
+  )
 }
 
 const View = ({character}) => {

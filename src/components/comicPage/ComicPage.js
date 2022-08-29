@@ -1,12 +1,14 @@
 import SubHeader from '../subHeader/SubHeader';
 import Header from '../header/Header';
+import useMarvelService from '../../services/MarvelService';
 
 import x_men from '../../img/x-men.png';
 
 import "../../sass/style.sass"
 import './comicPage.sass'
 
-function ComicPage() {
+const ComicPage = (props) => {
+
   return(
     <div className="comicPage">
 

@@ -1,5 +1,5 @@
-import { Component } from 'react';
-import MarvelService from '../../services/MarvelService';
+import { useState, useEffect } from 'react';
+import useMarvelService from '../../services/MarvelService';
 import Spinner from '../spinner/Spinner';
 import ErrorMessage from '../errorMessage/ErrorMessage';
 
@@ -8,81 +8,59 @@ import Decoration from '../../img/subHeader/Decoration.png';
 import '../../sass/style.sass'
 import './RandomCharacterInfo.sass'
 
-class RandomCharacterInfo extends Component {
-  state = {
-    character: {},
-    loading: true,
-    error: false
-  }
-  marvelService = new MarvelService();
+const RandomCharacterInfo = (props) => {
+  const [character, setCharacter] = useState({})
 
-  componentDidMount() {
-    this.updateCharacter();
-    //this.timerId = setInterval(this.updateCharacter, 3000)
-  }
+  const {loading, error, getCharacter, clearError} = useMarvelService();
 
-  componentWillUnmount() { clearInterval(this.timerId); }
+  useEffect(() => {
+    updateCharacter()
+    //timerId = setInterval(updateCharacter, 6000)
+    //return () => clearInterval(timerId)
+  }, []);
 
-  onCharacterLoading = () => this.setState({loading: true})
-
-  onCharacterLoaded = (character) => {
-    this.setState({
-      character, 
-      loading: false,
-    })
+  const onCharacterLoaded = (character) => {
+    // setLoading(false)
+    // setError(false)
+    setCharacter(character)
   }
 
-  onError = () => {
-    this.setState({
-      loading: false,
-      error: true
-    })
+  //const onCharacterLoading = () => setLoading(true)
+  // const onError = () => {
+  //   setLoading(false)
+  //   setError(true)
+  // }
+  
+  const updateCharacter = () => {
+    clearError();
+    const id = Math.floor(Math.random() * (1011400 - 1011000) + 1011000);
+    getCharacter(id)
+      .then(onCharacterLoaded)
   }
   
-  updateCharacter = () => {
-    const id = Math.floor(Math.random() * (1011400 - 1011000) + 1011000);
-    this.onCharacterLoading()
-    this.marvelService
-      .getCharacter(id)
-      .then(this.onCharacterLoaded)
-      .catch(this.onError)
-  }
-  
-  putCharactersOnPage = () => {
-    const id = Math.floor(Math.random() * (1011400 - 1011000) + 1011000);
-    this.marvelService
-    .getAllCharacters(id)
-    .then(this.onCharacterLoaded)
-    .catch(this.onError)
-  }
 
+  const errorMessage = error ? <ErrorMessage></ErrorMessage> : null;
+  const spinner = loading ? <Spinner></Spinner> : null;
+  const content = !(loading || error) ? <View character={character}></View> : null;
 
-  render() {
-    const {character, loading, error} = this.state;
-    const errorMessage = error ? <ErrorMessage></ErrorMessage> : null;
-    const spinner = loading ? <Spinner></Spinner> : null;
-    const content = !(loading || error) ? <View character={character}></View> : null;
-
-    return (
-      <div className="sub__header mt__50">
-        <div className="container flex__display">
-          <div className="info__block flex__display">
-            {errorMessage}
-            {spinner}
-            {content}
-          </div>
-          <div className="random__character__block">
-            <h2>Random character for today! <br /> 
-                Do you want to get to know him better?</h2>
-            <h3>Or choose another one</h3>
-            <button onClick={this.updateCharacter} className="btn">TRY IT</button>
-            <img src={Decoration} alt={Decoration} />
-          </div>   
+  return (
+    <div className="sub__header mt__50">
+      <div className="container flex__display">
+        <div className="info__block flex__display">
+          {errorMessage}
+          {spinner}
+          {content}
         </div>
+        <div className="random__character__block">
+          <h2>Random character for today! <br /> 
+              Do you want to get to know him better?</h2>
+          <h3>Or choose another one</h3>
+          <button onClick={updateCharacter} className="btn">TRY IT</button>
+          <img src={Decoration} alt='mjolnir' />
+        </div>   
       </div>
-    )
-  }
-  
+    </div>
+  )  
 }
 
 const View = ({character}) => {

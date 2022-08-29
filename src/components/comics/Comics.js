@@ -1,66 +1,85 @@
+import { useState, useEffect} from 'react';
 import SubHeader from '../subHeader/SubHeader';
 import Header from '../header/Header';
-
-import x_men from '../../img/x-men.png';
-import UW from '../../img/UW.png';
+import useMarvelService from '../../services/MarvelService';
+import ErrorMessage from '../errorMessage/ErrorMessage';
 
 import "../../sass/style.sass"
 import './comics.sass'
+import Spinner from '../spinner/Spinner';
 
-function Comics() {
+const Comics = (props) => {
+  const [comicsList, setComicsList] = useState([]);
+  const [newComicsLoading, setNewComicsLoading] = useState(false);
+  const [offset, setOffset] = useState(5);
+  const [comicsEnded, setComicsEnded] = useState(false);
+
+  const {loading, error, getAllComics} = useMarvelService();
+
+  const onRequest = (offset, initial) => { // отрисовывает extra characters on click etc.
+    initial ? setNewComicsLoading(false) : setNewComicsLoading(true)
+    getAllComics(offset)
+    .then(onComicsListLoaded)
+  }
+
+  useEffect(() => onRequest(offset, true), []);// отрисовывает comics when created page
+
+  const onComicsListLoaded = (newComicsList) => {
+    let ended = false;
+    if (newComicsList.length < 8) { ended = true; }
+
+    setComicsList(comicsList => [...comicsList, ...newComicsList])
+    setNewComicsLoading(newComicsLoading => false)
+    setOffset(offset => offset + 8)
+    setComicsEnded(comicsEnded => ended)
+  }
+
+  // чтобы не помещать такую конструкцию в метод render/return
+  const renderItems = (arr) => {
+    const comics = arr.map((item, i) => {
+      let imgStyle = {'objectFit' : 'cover'}
+      if (item.thumbnail === 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg') {
+        // eslint-disable-next-line
+        imgStyle = {'objectFit' : 'unset'}
+      }
+
+      return (
+        <li tabIndex={0} key={item.id} className="comics__card">
+          <a href="#">
+            <img src={item.thumbnail} alt={item.title}   />
+            <h2>{item.title} </h2>
+            <p>{item.price} </p>
+          </a>
+        </li>
+      )
+    })
+
+    return (
+      <ul className="flex__display comics__flex__display__wrap">
+        {comics}
+      </ul>
+    )
+  }
+
+  const comics = renderItems(comicsList);
+  const errorMessage = error ? <ErrorMessage /> : null;
+  const spinner = loading && !newComicsLoading ? <Spinner /> : null;
+
   return (
     <div className="comics">
-
       <Header></Header>
       <SubHeader></SubHeader>
+      {errorMessage}
+      {spinner}
 
       <div className="container">
-        <div className="flex__display comics__flex__display__wrap">
-          <a href="#" className="comics__card">
-              <img src={UW} alt={UW} />
-              <h2>ULTIMATE X-MEN VOL. 5: ULTIMATE WAR TPB</h2>
-              <p>9.99$</p>
-          </a>
-          <a href="#" className="comics__card">
-              <img src={x_men} alt={x_men} />
-              <h2>X-Men: Days of Future Past</h2>
-              <p>NOT AVAILABLE</p>
-          </a>
-          <a href="#" className="comics__card">
-              <img src={UW} alt={UW} />
-              <h2>ULTIMATE X-MEN VOL. 5: ULTIMATE WAR TPB</h2>
-              <p>9.99$</p>
-          </a>
-          <a href="#" className="comics__card">
-              <img src={x_men} alt={x_men} />
-              <h2>X-Men: Days of Future Past</h2>
-              <p>NOT AVAILABLE</p>
-          </a>          
-          <a href="#" className="comics__card">
-              <img src={UW} alt={UW} />
-              <h2>ULTIMATE X-MEN VOL. 5: ULTIMATE WAR TPB</h2>
-              <p>9.99$</p>
-          </a>
-          <a href="#" className="comics__card">
-              <img src={x_men} alt={x_men} />
-              <h2>X-Men: Days of Future Past</h2>
-              <p>NOT AVAILABLE</p>
-          </a>          
-          <a href="#" className="comics__card">
-              <img src={UW} alt={UW} />
-              <h2>ULTIMATE X-MEN VOL. 5: ULTIMATE WAR TPB</h2>
-              <p>9.99$</p>
-          </a>
-          <a href="#" className="comics__card">
-              <img src={x_men} alt={x_men} />
-              <h2>X-Men: Days of Future Past</h2>
-              <p>NOT AVAILABLE</p>
-          </a>
-        </div>
+        {comics}
 
-        <button className="btn btn__comics__load__more">LOAD MORE</button>
+        <button onClick={() => onRequest(offset)}
+                disabled={newComicsLoading}
+                //style={{'display': comicsEnded ? 'none' : 'block'}}
+                className="btn btn__comics__load__more">LOAD MORE</button>
       </div>
-
     </div>
   )
 }
