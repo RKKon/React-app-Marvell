@@ -8,18 +8,34 @@ import Spinner from '../spinner/Spinner'
 import '../../sass/style.sass'
 import './charactersList.sass'
 
+const setContent = (process, Component, newItemLoading) => {
+  switch (process) {
+    case 'waiting': 
+      return <Spinner/>
+    case 'loading': 
+      return newItemLoading ? <Component/> : <Spinner/>
+    case 'confirmed': 
+      return <Component/>
+    case 'error': 
+      return <ErrorMessage/>
+    default: 
+      throw new Error('Unexpected process state')
+  }
+}
+
 const CharactersList = (props) => {
   const [charactersList, setCharactersList] = useState([]);
   const [newItemLoading, setNewItemLoading] = useState(false);
   const [offset, setOffset] = useState(211);
   const [charEnded, setCharEnded] = useState(false);
 
-  const {loading, error, getAllCharacters} = useMarvelService();
+  const {loading, error, getAllCharacters, process, setProcess} = useMarvelService();
 
   const onRequest = (offset, initial) => { // отрисовывает extra characters on click etc. 
     initial ? setNewItemLoading(false)  : setNewItemLoading(true)
     getAllCharacters(offset)
       .then(onCharactersListLoaded)
+      .then(() => setProcess('confirmed'))
   }
 
   useEffect(() => { onRequest(offset, true) }, []) // отрисовывает characters when create page
@@ -74,16 +90,17 @@ const CharactersList = (props) => {
     )
   }
 
-  const items = renderItems(charactersList);
-  const errorMessage = error ? <ErrorMessage /> : null;
-  const spinner = loading && !newItemLoading ? <Spinner /> : null;
+  // const items = renderItems(charactersList);
+  // const errorMessage = error ? <ErrorMessage /> : null;
+  // const spinner = loading && !newItemLoading ? <Spinner /> : null;
 
 
   return (
     <div className="characters">
-        {errorMessage}
+        {setContent(process, () =>  renderItems(charactersList), newItemLoading )}
+        {/* {errorMessage}
         {spinner}
-        {items}
+        {items} */}
       <button disabled={newItemLoading} 
               onClick={() => onRequest(offset)}
               style={{'display': charEnded ? 'none' : 'block'}} 

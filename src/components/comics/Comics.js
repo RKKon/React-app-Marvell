@@ -9,18 +9,34 @@ import "../../sass/style.sass"
 import './comics.sass'
 import Spinner from '../spinner/Spinner';
 
+const setContent = (process, Component, newComicsLoading) => {
+  switch (process) {
+    case 'waiting': 
+      return <Spinner/>
+    case 'loading': 
+      return newComicsLoading ? <Component/> : <Spinner/>
+    case 'confirmed': 
+      return <Component/>
+    case 'error': 
+      return <ErrorMessage/>
+    default: 
+      throw new Error('Unexpected process state')
+  }
+}
+
 const Comics = (props) => {
   const [comicsList, setComicsList] = useState([]);
   const [newComicsLoading, setNewComicsLoading] = useState(false);
   const [offset, setOffset] = useState(5);
   const [comicsEnded, setComicsEnded] = useState(false);
 
-  const {loading, error, getAllComics} = useMarvelService();
+  const {loading, error, getAllComics, process, setProcess} = useMarvelService();
 
   const onRequest = (offset, initial) => { // отрисовывает extra characters on click etc.
     initial ? setNewComicsLoading(false) : setNewComicsLoading(true)
     getAllComics(offset)
     .then(onComicsListLoaded)
+    .then(() => setProcess('confirmed'))
   }
 
   useEffect(() => onRequest(offset, true), []);// отрисовывает comics when created page
@@ -62,18 +78,19 @@ const Comics = (props) => {
     )
   }
 
-  const comics = renderItems(comicsList);
-  const errorMessage = error ? <ErrorMessage /> : null;
-  const spinner = loading && !newComicsLoading ? <Spinner /> : null;
+  // const comics = renderItems(comicsList);
+  // const errorMessage = error ? <ErrorMessage /> : null;
+  // const spinner = loading && !newComicsLoading ? <Spinner /> : null;
 
   return (
     <div className="comics">
       <SubHeader></SubHeader>
-      {errorMessage}
-      {spinner}
+      {/* {errorMessage}
+      {spinner} */}
 
       <div className="container">
-        {comics}
+      {setContent(process, () =>  renderItems(comicsList), newComicsLoading )}
+        {/* {comics} */}
 
         <button onClick={() => onRequest(offset)}
                 disabled={newComicsLoading}

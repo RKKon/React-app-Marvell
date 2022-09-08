@@ -3,10 +3,8 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import useMarvelService from '../../services/MarvelService';
-import ErrorMessage from '../errorMessage/ErrorMessage';
-import Spinner from '../spinner/Spinner';
-import Skeleton from '../skeleton/Skeleton'
 import Form from '../form/Form';
+import setContent from '../../utils/setContent';
 
 import '../../sass/style.sass'
 import './characterInfo.sass'
@@ -14,7 +12,7 @@ import './characterInfo.sass'
 const CharacterInfo = (props) => {
   const [character, setCharacter] = useState(null);
 
-  const {loading, error, getCharacter, clearError} = useMarvelService();
+  const {loading, error, getCharacter, clearError, process, setProcess} = useMarvelService();
 
   const onCharacterLoaded = (character) => {
     setCharacter(character)
@@ -27,32 +25,35 @@ const CharacterInfo = (props) => {
 
     getCharacter(characterId)
       .then(onCharacterLoaded)
+      .then(() => setProcess('confirmed'))
   }
 
   useEffect(() => {
     updateCharacter();
   },[props.characterId])
 
-  const skeleton = character || loading || error ? null : <Skeleton></Skeleton>;
-  const errorMessage = error ? <ErrorMessage></ErrorMessage> : null;
-  const spinner = loading ? <Spinner></Spinner> : null;
-  const content = !(loading || error || !character) ? <View character={character}></View> : null;
+
+  // const skeleton = character || loading || error ? null : <Skeleton/>;
+  // const errorMessage = error ? <ErrorMessage/> : null;
+  // const spinner = loading ? <Spinner/> : null;
+  // const content = !(loading || error || !character) ? <View character={character}/> : null;
   
   return (
     <div className='need_flex_style_if_use_itself'>
       <div className="character__info__active">
-        {skeleton}
+        {setContent(process, View, character)}
+        {/* {skeleton}
         {errorMessage}
         {spinner}
-        {content}
+        {content} */}
       </div>
       <Form></Form>
     </div>
   )
 }
 
-const View = ({character}) => {
-  const {name, description, thumbnail, homepage, wiki, comics} = character;
+const View = ({data}) => {
+  const {name, description, thumbnail, homepage, wiki, comics} = data;
   return (
     <>
       <img src={thumbnail} alt={name} />

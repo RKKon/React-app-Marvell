@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import useMarvelService from '../../services/MarvelService';
 import Spinner from '../spinner/Spinner';
 import ErrorMessage from '../errorMessage/ErrorMessage';
+import setContent from '../../utils/setContent';
 
 import Decoration from '../../img/subHeader/Decoration.png';
 
@@ -11,7 +12,7 @@ import './RandomCharacterInfo.sass'
 const RandomCharacterInfo = (props) => {
   const [character, setCharacter] = useState({})
 
-  const {loading, error, getCharacter, clearError} = useMarvelService();
+  const {loading, error, getCharacter, clearError, process, setProcess} = useMarvelService();
 
   useEffect(() => {
     updateCharacter()
@@ -36,20 +37,22 @@ const RandomCharacterInfo = (props) => {
     const id = Math.floor(Math.random() * (1011400 - 1011000) + 1011000);
     getCharacter(id)
       .then(onCharacterLoaded)
+      .then(() => setProcess('confirmed'))
   }
   
 
-  const errorMessage = error ? <ErrorMessage></ErrorMessage> : null;
-  const spinner = loading ? <Spinner></Spinner> : null;
-  const content = !(loading || error) ? <View character={character}></View> : null;
+  // const errorMessage = error ? <ErrorMessage></ErrorMessage> : null;
+  // const spinner = loading ? <Spinner></Spinner> : null;
+  // const content = !(loading || error) ? <View character={character}></View> : null;
 
   return (
     <div className="sub__header mt__50">
       <div className="container flex__display">
         <div className="info__block flex__display">
-          {errorMessage}
+          {setContent(process, View, character)}
+          {/* {errorMessage}
           {spinner}
-          {content}
+          {content} */}
         </div>
         <div className="random__character__block">
           <h2>Random character for today! <br /> 
@@ -63,8 +66,8 @@ const RandomCharacterInfo = (props) => {
   )  
 }
 
-const View = ({character}) => {
-  const {name, description, thumbnail, homepage, wiki} = character;
+const View = ({data}) => {
+  const {name, description, thumbnail, homepage, wiki} = data;
   return (
     <div className="info__block flex__display">
       <div>
