@@ -1,34 +1,31 @@
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { lazy, Suspense } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
-import CharacterPage from '../characterPage/CharacterPage';
-import ComicPage from '../comicPage/ComicPage';
+//import SingleCharacterPage from '../pages/SingleCharacterPage/SingleCharacterPage';
+import Header from '../header/Header';
+import Spinner from '../spinner/Spinner';
 
-import {ComicsPage, MainPage} from '../pages/index';
-
-import '../../sass/style.sass'
+const Page404 = lazy(() => import('../pages/404'));
+const MainPage = lazy(() => import('../pages/MainPage'));
+const ComicsPage = lazy(() => import('../pages/ComicsPage'));
+const SingleComicPage = lazy(() => import('../pages/SingleComicPage'));
+const SingleCharacterPage = lazy(() => import('../pages/SingleCharacterPage/SingleCharacterPage'))
 
 const App = () => { 
 
   return (
     <Router>
       <main className="App">
-        <Switch>
-          <Route exact path='/'>
-            <MainPage />
-          </Route>
-
-          <Route exact path={'/character_page'}>
-            <CharacterPage />
-          </Route>  
-
-          <Route exact path={'/comic_page'}>
-            <ComicPage />
-          </Route>
-
-          <Route exact path='/comics'>
-            <ComicsPage />
-          </Route>
-        </Switch>
+        <Header/>
+        <Suspense fallback={<Spinner/>}>
+          <Routes>
+            <Route path='/' element={<MainPage/>} />
+            <Route path='/comics' element={<ComicsPage/>} />
+            <Route path='/comics/:comicId' element={<SingleComicPage/>} />
+            <Route path='/characters/:characterId' element={<SingleCharacterPage/>} />
+            <Route path='*' element={<Page404/>} />
+          </Routes>
+        </Suspense>
       </main>
     </Router>
   )

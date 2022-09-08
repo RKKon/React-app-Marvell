@@ -10,8 +10,12 @@ function Header() {
         <Link to="/" className="fsize__28 colored__letters">Marvel</Link> information portal
       </span>  
       <nav className="fsize__24 mt__4">
-        <NavLink exact activeClassName='colored__letters' to="/" className="fsize__24">Characters</NavLink> 
-        <NavLink exact activeClassName='colored__letters' to='/comics' className="fsize__24"> / Comics</NavLink>
+        <NavLink end 
+                 to="/"
+                 className={({isActive}) => (isActive ? 'colored__letters fsize__24' : 'fsize__24')}>
+                  Characters</NavLink> 
+        <NavLink to='/comics' 
+                 className={({isActive}) => (isActive ? 'colored__letters fsize__24' : 'fsize__24')}> / Comics</NavLink>
       </nav>
     </header>
   )

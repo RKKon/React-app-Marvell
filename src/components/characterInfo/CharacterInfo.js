@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
-import Form from '../form/Form';
 import useMarvelService from '../../services/MarvelService';
 import ErrorMessage from '../errorMessage/ErrorMessage';
 import Spinner from '../spinner/Spinner';
 import Skeleton from '../skeleton/Skeleton'
+import Form from '../form/Form';
 
 import '../../sass/style.sass'
 import './characterInfo.sass'
@@ -36,6 +37,7 @@ const CharacterInfo = (props) => {
   const errorMessage = error ? <ErrorMessage></ErrorMessage> : null;
   const spinner = loading ? <Spinner></Spinner> : null;
   const content = !(loading || error || !character) ? <View character={character}></View> : null;
+  
   return (
     <div className='need_flex_style_if_use_itself'>
       <div className="character__info__active">
@@ -66,7 +68,7 @@ const View = ({character}) => {
             // eslint-disable-next-line
             if (i > 9) return; //limit 10 comics
             return (
-              <li key={i}><a href="#">{item.name}</a></li>
+              <li key={i}><Link to={`/comics/${item.resourceURI.substring(43)}`}>{item.name}</Link></li>
             )
           })
         }       

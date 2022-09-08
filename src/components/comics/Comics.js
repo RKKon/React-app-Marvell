@@ -1,7 +1,7 @@
 import { useState, useEffect} from 'react';
+import { Link } from 'react-router-dom';
 
 import SubHeader from '../subHeader/SubHeader';
-import Header from '../header/Header';
 import useMarvelService from '../../services/MarvelService';
 import ErrorMessage from '../errorMessage/ErrorMessage';
 
@@ -46,11 +46,11 @@ const Comics = (props) => {
 
       return (
         <li tabIndex={0} key={item.id} className="comics__card">
-          <a href="#">
+          <Link to={`/comics/${item.id}`}>
             <img src={item.thumbnail} alt={item.title}   />
             <h2>{item.title} </h2>
             <p>{item.price} </p>
-          </a>
+          </Link>
         </li>
       )
     })
@@ -68,7 +68,6 @@ const Comics = (props) => {
 
   return (
     <div className="comics">
-      <Header></Header>
       <SubHeader></SubHeader>
       {errorMessage}
       {spinner}

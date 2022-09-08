@@ -1,6 +1,6 @@
 import { useState } from 'react';
+import { Helmet } from 'react-helmet';
 
-import Header from '../header/Header';
 import RandomCharacterInfo from '../randomCharacterInfo/RandomCharacterInfo';
 import CharactersList from '../charactersList/CharactersList';
 import CharacterInfo from '../characterInfo/CharacterInfo';
@@ -18,7 +18,13 @@ const MainPage = () => {
 
   return (
     <>
-      <Header />   
+      <Helmet>
+        <meta
+        name="description"
+        content="Web site created using create-react-app"
+        />
+        <title>React app Marvell</title>
+      </Helmet>
       <ErrorBoundary>
         <RandomCharacterInfo />
       </ErrorBoundary>

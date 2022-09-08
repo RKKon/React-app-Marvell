@@ -11,7 +11,7 @@ import './charactersList.sass'
 const CharactersList = (props) => {
   const [charactersList, setCharactersList] = useState([]);
   const [newItemLoading, setNewItemLoading] = useState(false);
-  const [offset, setOffset] = useState(210);
+  const [offset, setOffset] = useState(211);
   const [charEnded, setCharEnded] = useState(false);
 
   const {loading, error, getAllCharacters} = useMarvelService();
@@ -77,6 +77,7 @@ const CharactersList = (props) => {
   const items = renderItems(charactersList);
   const errorMessage = error ? <ErrorMessage /> : null;
   const spinner = loading && !newItemLoading ? <Spinner /> : null;
+
 
   return (
     <div className="characters">
