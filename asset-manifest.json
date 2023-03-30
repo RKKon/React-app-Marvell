@@ -1,21 +1,42 @@
 {
   "files": {
-    "main.css": "/React-app-Marvell/static/css/main.1d859536.css",
-    "main.js": "/React-app-Marvell/static/js/main.c9e31465.js",
-    "static/media/x-men.png": "/React-app-Marvell/static/media/x-men.1f72fb76e56462a9c7d4.png",
-    "static/media/UW.png": "/React-app-Marvell/static/media/UW.73045b0eee92df0c9051.png",
+    "main.css": "/React-app-Marvell/static/css/main.352ec882.css",
+    "main.js": "/React-app-Marvell/static/js/main.41759c31.js",
+    "static/css/20.f00daafb.chunk.css": "/React-app-Marvell/static/css/20.f00daafb.chunk.css",
+    "static/js/20.e4094626.chunk.js": "/React-app-Marvell/static/js/20.e4094626.chunk.js",
+    "static/css/191.c7d8d52c.chunk.css": "/React-app-Marvell/static/css/191.c7d8d52c.chunk.css",
+    "static/js/191.889dc977.chunk.js": "/React-app-Marvell/static/js/191.889dc977.chunk.js",
+    "static/css/288.9ba3ba3c.chunk.css": "/React-app-Marvell/static/css/288.9ba3ba3c.chunk.css",
+    "static/js/288.1ff09cbc.chunk.js": "/React-app-Marvell/static/js/288.1ff09cbc.chunk.js",
+    "static/css/742.9a046e11.chunk.css": "/React-app-Marvell/static/css/742.9a046e11.chunk.css",
+    "static/js/742.63271a76.chunk.js": "/React-app-Marvell/static/js/742.63271a76.chunk.js",
+    "static/css/623.c02ebf26.chunk.css": "/React-app-Marvell/static/css/623.c02ebf26.chunk.css",
+    "static/js/623.a79e613e.chunk.js": "/React-app-Marvell/static/js/623.a79e613e.chunk.js",
+    "static/js/353.764fef72.chunk.js": "/React-app-Marvell/static/js/353.764fef72.chunk.js",
+    "static/js/325.f2bf5224.chunk.js": "/React-app-Marvell/static/js/325.f2bf5224.chunk.js",
     "static/media/bg_asset.png": "/React-app-Marvell/static/media/bg_asset.4d6f967110994e4613c0.png",
-    "static/media/loki.png": "/React-app-Marvell/static/media/loki.a8e28fbb6392bccbbfc5.png",
     "static/media/Decoration.png": "/React-app-Marvell/static/media/Decoration.b10f8e634d5efd274514.png",
     "static/media/Avengers.png": "/React-app-Marvell/static/media/Avengers.c29e0ef078dddc7551e8.png",
     "static/media/error.gif": "/React-app-Marvell/static/media/error.42292aa12b6bc303ce99.gif",
     "static/media/Avengers_logo.png": "/React-app-Marvell/static/media/Avengers_logo.9b944f717f2c146c4762.png",
     "index.html": "/React-app-Marvell/index.html",
-    "main.1d859536.css.map": "/React-app-Marvell/static/css/main.1d859536.css.map",
-    "main.c9e31465.js.map": "/React-app-Marvell/static/js/main.c9e31465.js.map"
+    "main.352ec882.css.map": "/React-app-Marvell/static/css/main.352ec882.css.map",
+    "main.41759c31.js.map": "/React-app-Marvell/static/js/main.41759c31.js.map",
+    "20.f00daafb.chunk.css.map": "/React-app-Marvell/static/css/20.f00daafb.chunk.css.map",
+    "20.e4094626.chunk.js.map": "/React-app-Marvell/static/js/20.e4094626.chunk.js.map",
+    "191.c7d8d52c.chunk.css.map": "/React-app-Marvell/static/css/191.c7d8d52c.chunk.css.map",
+    "191.889dc977.chunk.js.map": "/React-app-Marvell/static/js/191.889dc977.chunk.js.map",
+    "288.9ba3ba3c.chunk.css.map": "/React-app-Marvell/static/css/288.9ba3ba3c.chunk.css.map",
+    "288.1ff09cbc.chunk.js.map": "/React-app-Marvell/static/js/288.1ff09cbc.chunk.js.map",
+    "742.9a046e11.chunk.css.map": "/React-app-Marvell/static/css/742.9a046e11.chunk.css.map",
+    "742.63271a76.chunk.js.map": "/React-app-Marvell/static/js/742.63271a76.chunk.js.map",
+    "623.c02ebf26.chunk.css.map": "/React-app-Marvell/static/css/623.c02ebf26.chunk.css.map",
+    "623.a79e613e.chunk.js.map": "/React-app-Marvell/static/js/623.a79e613e.chunk.js.map",
+    "353.764fef72.chunk.js.map": "/React-app-Marvell/static/js/353.764fef72.chunk.js.map",
+    "325.f2bf5224.chunk.js.map": "/React-app-Marvell/static/js/325.f2bf5224.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.1d859536.css",
-    "static/js/main.c9e31465.js"
+    "static/css/main.352ec882.css",
+    "static/js/main.41759c31.js"
   ]
 }
