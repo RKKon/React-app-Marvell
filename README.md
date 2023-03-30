@@ -1,3 +1,5 @@
-This my personal React app.
+This my personal Marvell React app.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app)
+npm i
+
+npm start 
