@@ -5,7 +5,7 @@ import './header.sass'
 
 function Header() {
   return (
-    <header className="container pt__50 flex__display_jc">
+    <header className="container pt__50 flex__display_jc header_media">
       <span className="fsize__28">
         <Link to="/" className="fsize__28 colored__letters">Marvel</Link> information portal
       </span>  

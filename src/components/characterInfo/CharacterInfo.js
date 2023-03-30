@@ -33,10 +33,10 @@ const CharacterInfo = (props) => {
     updateCharacter();
   },[props.characterId])
 
-  const skeleton = character || loading || error ? null : <Skeleton></Skeleton>;
-  const errorMessage = error ? <ErrorMessage></ErrorMessage> : null;
-  const spinner = loading ? <Spinner></Spinner> : null;
-  const content = !(loading || error || !character) ? <View character={character}></View> : null;
+  const skeleton = character || loading || error ? null : <Skeleton/>;
+  const errorMessage = error ? <ErrorMessage/> : null;
+  const spinner = loading ? <Spinner/> : null;
+  const content = !(loading || error || !character) ? <View character={character}/> : null;
   
   return (
     <div className='need_flex_style_if_use_itself'>

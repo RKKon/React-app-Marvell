@@ -45,12 +45,10 @@ const RandomCharacterInfo = (props) => {
 
   return (
     <div className="sub__header mt__50">
-      <div className="container flex__display">
-        <div className="info__block flex__display">
-          {errorMessage}
-          {spinner}
-          {content}
-        </div>
+      <div className="container flex__display random_character_media">
+        {errorMessage}
+        {spinner}
+        {content}
         <div className="random__character__block">
           <h2>Random character for today! <br /> 
               Do you want to get to know him better?</h2>

@@ -28,7 +28,7 @@ const MainPage = () => {
       <ErrorBoundary>
         <RandomCharacterInfo />
       </ErrorBoundary>
-      <div className="container mt__20 flex__display">
+      <div className="container mt__20 flex__display character_overlay_media">
         <ErrorBoundary>
           <CharactersList onCharacterSelected={onCharacterSelected} />
         </ErrorBoundary> 

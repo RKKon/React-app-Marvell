@@ -1,0 +1,271 @@
+@import _variables.sass
+
+@media (max-width: 1200px)
+	.header_media
+		max-width: 800px
+		padding-top: 40px
+		margin: 0 auto
+	.random__character__block img 
+		display: none
+	.bg__man 
+		display: none
+	.info__block
+		min-width: 300px !important
+		margin-left: 10px
+	.info__block button 
+		margin-right: 18px !important
+	.random__character__block
+		width: 150px
+		min-width: 250px	
+		margin-right: 10px
+	.contetnt__container
+		margin-left: 35px
+		width: 470px !important
+
+
+@media (max-width: 1110px)
+	// comics
+	.comics__flex__display__wrap
+		justify-content: center
+	.comics__card
+			&:nth-child(4n)
+					margin-right: 60px !important
+	.comic__text 
+		h2
+			width: 550px !important
+		a
+			margin-right: 5px
+		p
+			padding-right: 120px !important
+	.comic__img
+		margin-left: 10px
+
+
+@media (max-width: 991px)
+	.header_media
+		max-width: 700px
+	.info__block button 
+		margin-right: 11px !important
+	.random__character__block 
+		width: 320px !important
+		h2 
+			font-size: 19px !important
+			margin-top: 25px !important
+			margin-left: 25px !important
+		h3 
+			font-size: 20px !important
+			margin-top: 25px !important
+			margin-left: 25px !important
+	.contetnt__container
+		margin-left: 15px
+		width: 450px !important
+	.character__info__active
+		width: 295px !important
+		img
+			display: block
+			margin: 0 auto 10px auto !important
+			padding-top: 7px
+	.character__search
+		width: 295px !important
+	.character__info__active__h2
+		position: static !important
+		font-size: 18px !important
+		margin-left: 25px
+	.first__character__btn
+		position: static !important
+		margin: 10px 20px 10px 25px
+	.second__character__btn
+		position: static !important
+	.character__form
+		width: 290px !important
+	.character__form button
+		margin: -8px 20px 10px 25px !important
+	// comics
+	.banner__comics 
+		h2
+			font-size: 20px !important
+			margin-right: 100px !important
+	.comics__card
+		height: 400px !important
+		margin-right: 30px !important
+		margin-bottom: 10px !important
+		&:nth-child(3n)
+			margin-right: 0px !important
+		&:nth-child(4n)
+			margin-right: 30px !important
+		&:nth-child(12n)
+			margin-right: 0px !important
+		img 
+			width: 220px !important
+	.comic__text h2
+			width: 300px !important
+	.comic__text a
+		margin-right: 5px
+
+
+@media (max-width: 767px)
+	.header_media
+		max-width: 540px
+	.fsize__28
+		font-size: 24px !important
+	.random_character_media
+		flex-direction: column-reverse
+	.info__block
+		margin: 0 auto !important
+	.character_overlay_media 
+		justify-content: center
+	.random__character__block
+		min-height: 50px !important
+		width: 550px !important
+		margin: 0 auto !important
+		h2
+			margin-top: 10px !important
+		h3
+			display: inline-block
+			margin-top: 10px !important
+			margin-right: 120px !important
+	.contetnt__container
+		margin-left: 10px
+		width: 230px !important
+	// comics
+	.banner__comics img
+		&:last-child
+			display: none !important
+
+
+@media (max-width: 734px)
+	// comics
+	.comics__card
+		&:nth-child(3n)
+			margin-right: 30px !important
+		&:nth-child(2n)
+			margin-right: 0px !important
+	.single_comics_media
+		margin-top: 70px
+	.comic__text 
+		a
+			position: absolute
+			top: 250px
+			font-size: 20px !important
+			color: $main__btn__color !important
+			left: 50%
+			transform: translateX(-50%)
+		h2 
+			margin-left: 30px !important
+			width: 265px !important
+		p
+			margin-left: 30px !important
+			padding-right: 0px !important
+			margin-right: 10px !important
+	.comic__img img
+		width: 240px !important
+		height: 390px !important
+
+
+@media (max-width: 575px)
+	.header_media
+		max-width: 390px
+	.fsize__24
+		font-size: 22px !important
+	.info__block
+		width: 390px !important
+		button
+			margin-bottom: 5px
+		h2
+			margin-top: 5px !important
+	.random__character__block
+		width: 390px !important
+		h3
+			margin-right: 0px !important
+	.character_overlay_media
+		flex-direction: column
+	.characters__card
+		width: 300px !important
+		img
+			width: 300px !important
+	.contetnt__container
+		width: 300px !important
+		margin: 0 auto
+	.btn__load__more
+		margin: 20px auto 0 auto
+	.character__info__active
+		margin: 30px auto 0 auto
+	.character__form
+		position: static !important
+		margin: 30px auto 20px auto
+	// comics
+	.comic__text 
+		h2 
+			font-size: 18px !important
+			margin-left: 20px !important
+			width: 200px !important
+			margin-bottom: 15px !important
+		p
+			margin-left: 20px !important
+			padding-right: 0px !important
+			margin-right: 10px !important
+			margin-bottom: 20px !important
+			font-size: 16px !important
+	.comic__img img
+		width: 180px !important
+		height: 250px !important
+	.banner__comics 
+		margin-top: 20px !important
+		margin-bottom: 30px !important
+		
+
+@media (max-width: 530px)
+	// comics
+	.banner__comics 
+		img
+			margin-left: 20px !important
+		h2
+			margin-right: 20px !important
+			font-size: 18px !important
+	.comics__card
+		width: 300px !important
+		height: 410px !important
+		img
+			width: 300px !important
+			height: 340px !important
+		&:nth-child(1n)
+			margin-right: 0px !important
+
+
+@media (max-width: 410px)
+	.header_media 
+		max-width: 290px !important
+	.info__block
+		width: 300px !important		
+	.random__character__block
+		width: 300px !important
+	.random__character__main__img
+		margin: 10px !important
+		width: 150px !important
+		height: 150px !important
+	.random__character__block button	
+		margin-bottom: 10px !important
+	// comics
+	.banner__comics 	
+		img
+			margin-left: 8px !important
+		h2
+			margin-right: 10px !important
+			font-size: 17px !important
+	.comic__text 
+		a
+			top: 280px
+		h2 
+			font-size: 16px !important
+			margin-left: 10px !important
+			width: 150px !important
+			margin-bottom: 10px !important
+		p
+			margin-left: 10px !important
+			margin-right: 8px !important
+			font-size: 15px !important
+	.comic__img img
+		width: 150px !important
+		height: 220px !important
+
+// @media (max-width: 320px) 

@@ -11,8 +11,9 @@ import './charactersList.sass'
 const CharactersList = (props) => {
   const [charactersList, setCharactersList] = useState([]);
   const [newItemLoading, setNewItemLoading] = useState(false);
-  const [offset, setOffset] = useState(211);
+  const [offset, setOffset] = useState(213);
   const [charEnded, setCharEnded] = useState(false);
+
 
   const {loading, error, getAllCharacters} = useMarvelService();
 

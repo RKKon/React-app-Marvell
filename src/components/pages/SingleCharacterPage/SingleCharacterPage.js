@@ -1,4 +1,4 @@
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 
@@ -55,7 +55,7 @@ const View = ({characterPage}) => {
         />
         <title>{name}</title>
       </Helmet>
-      <SubHeader></SubHeader>
+      <SubHeader/>
 
       <div className="container flex__display ">
         <div className="character_img">

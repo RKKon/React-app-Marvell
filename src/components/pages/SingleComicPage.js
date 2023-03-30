@@ -57,7 +57,7 @@ const View = ({comic}) => {
       </Helmet>
       <SubHeader></SubHeader>
 
-      <div className="container flex__display">
+      <div className="container flex__display single_comics_media">
         <div className="comic__img">
           <img src={thumbnail} alt={title} />
         </div>
