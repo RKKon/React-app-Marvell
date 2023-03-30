@@ -19,7 +19,7 @@ const App = () => {
         <Header/>
         <Suspense fallback={<Spinner/>}>
           <Routes>
-            <Route path='/' element={<MainPage/>} />
+            <Route path='/React-app-Marvell' element={<MainPage/>} />
             <Route path='/comics' element={<ComicsPage/>} />
             <Route path='/comics/:comicId' element={<SingleComicPage/>} />
             <Route path='/characters/:characterId' element={<SingleCharacterPage/>} />
