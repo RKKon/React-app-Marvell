@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/React-app-Marvell/static/css/main.352ec882.css",
-    "main.js": "/React-app-Marvell/static/js/main.41759c31.js",
+    "main.js": "/React-app-Marvell/static/js/main.f53c7ffa.js",
     "static/css/20.f00daafb.chunk.css": "/React-app-Marvell/static/css/20.f00daafb.chunk.css",
     "static/js/20.e4094626.chunk.js": "/React-app-Marvell/static/js/20.e4094626.chunk.js",
     "static/css/191.c7d8d52c.chunk.css": "/React-app-Marvell/static/css/191.c7d8d52c.chunk.css",
@@ -21,7 +21,7 @@
     "static/media/Avengers_logo.png": "/React-app-Marvell/static/media/Avengers_logo.9b944f717f2c146c4762.png",
     "index.html": "/React-app-Marvell/index.html",
     "main.352ec882.css.map": "/React-app-Marvell/static/css/main.352ec882.css.map",
-    "main.41759c31.js.map": "/React-app-Marvell/static/js/main.41759c31.js.map",
+    "main.f53c7ffa.js.map": "/React-app-Marvell/static/js/main.f53c7ffa.js.map",
     "20.f00daafb.chunk.css.map": "/React-app-Marvell/static/css/20.f00daafb.chunk.css.map",
     "20.e4094626.chunk.js.map": "/React-app-Marvell/static/js/20.e4094626.chunk.js.map",
     "191.c7d8d52c.chunk.css.map": "/React-app-Marvell/static/css/191.c7d8d52c.chunk.css.map",
@@ -37,6 +37,6 @@
   },
   "entrypoints": [
     "static/css/main.352ec882.css",
-    "static/js/main.41759c31.js"
+    "static/js/main.f53c7ffa.js"
   ]
 }
